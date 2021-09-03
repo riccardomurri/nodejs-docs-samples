@@ -46,41 +46,6 @@ const invocation = (port, event) => {
   });
 };
 
-describe('functions_cloudevent_pubsub', () => {
-  const PORT = 9081;
-  let ffProc;
-  let ffProcHandler;
-
-  before(async () => {
-    ffProc = await startFF('helloPubSub', 'cloudevent', PORT);
-    ffProcHandler = getFFOutput(ffProc);
-  });
-
-  after(() => {
-    // Stop any residual Functions Framework instances
-    try {
-      ffProc.kill();
-    } finally {
-      /* Do nothing */
-    }
-  });
-
-  it('should process a CloudEvent', async () => {
-    const event = {
-      data: {
-        message: 'd29ybGQ=', // 'World' in base 64
-      },
-    };
-    const response = await invocation(PORT, event);
-    ffProc.kill();
-
-    const output = await ffProcHandler;
-
-    assert.strictEqual(response.status, 204);
-    assert.strictEqual(output.includes('Hello, World!'), true);
-  });
-});
-
 describe('functions_cloudevent_storage', () => {
   const PORT = 9082;
   let ffProc;

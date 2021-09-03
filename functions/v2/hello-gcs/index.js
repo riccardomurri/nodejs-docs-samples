@@ -14,26 +14,6 @@
 
 'use strict';
 
-// [START functions_cloudevent_pubsub]
-/**
- * CloudEvent function to be triggered by Pub/Sub.
- * This function is exported by index.js, and executed when
- * the trigger topic receives a message.
- *
- * @param {object} cloudevent A CloudEvent containing the Pub/Sub message.
- * @param {object} cloudevent.data.message The Pub/Sub message itself.
- */
-exports.helloPubSub = cloudevent => {
-  const base64name = cloudevent.data.message.data;
-
-  const name = base64name
-    ? Buffer.from(base64name, 'base64').toString()
-    : 'World';
-
-  console.log(`Hello, ${name}!`);
-};
-// [END functions_cloudevent_pubsub]
-
 // [START functions_cloudevent_storage]
 /**
  * CloudEvent function to be triggered by Cloud Storage.
