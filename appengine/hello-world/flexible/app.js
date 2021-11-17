@@ -14,6 +14,8 @@
 
 'use strict';
 
+require('@google-cloud/debug-agent').start({serviceContext: {enableCanary: true}});
+
 // [START gae_flex_quickstart]
 const express = require('express');
 
