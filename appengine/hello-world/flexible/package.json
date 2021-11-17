@@ -17,6 +17,7 @@
     "test": "mocha --exit test/*.test.js"
   },
   "dependencies": {
+    "@google-cloud/debug-agent": "^5.2.8",
     "express": "^4.17.1"
   },
   "devDependencies": {
